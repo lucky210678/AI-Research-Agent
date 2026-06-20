@@ -1,0 +1,5 @@
+Artificial Intelligence|Simulation of human intelligence by machines|Healthcare, Finance, Robotics
+
+Machine Learning|Algorithms that learn from data|Prediction, Classification, Recommendation
+
+Robotics|Design and development of intelligent machines|Manufacturing, Healthcare, Space
