@@ -6,13 +6,11 @@ ReportAgent::ReportAgent()
 {
 }
 
-std::string ReportAgent::execute(std::string input)
+std::string ReportAgent::execute(std::string content)
 {
     std::ofstream report("reports/report.txt");
 
-    report << "Research Report\n";
-    report << "=====================\n";
-    report << "Topic: " << input << "\n";
+    report << content;
 
     report.close();
 

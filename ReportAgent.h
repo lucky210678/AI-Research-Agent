@@ -8,7 +8,7 @@ class ReportAgent : public Agent
 public:
     ReportAgent();
 
-    std::string execute(std::string input) override;
+    std::string execute(std::string content) override;
 };
 
 #endif
