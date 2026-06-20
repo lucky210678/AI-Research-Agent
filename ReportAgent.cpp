@@ -1,5 +1,6 @@
 #include "ReportAgent.h"
 #include <fstream>
+#include <algorithm>
 
 ReportAgent::ReportAgent()
     : Agent("Report Agent")
@@ -8,11 +9,35 @@ ReportAgent::ReportAgent()
 
 std::string ReportAgent::execute(std::string content)
 {
-    std::ofstream report("reports/report.txt");
+    std::string filename = content;
+
+    size_t topicPos = content.find("Topic: ");
+
+    if (topicPos != std::string::npos)
+    {
+        size_t start = topicPos + 7;
+        size_t end = content.find('\n', start);
+
+        filename = content.substr(start, end - start);
+
+        std::replace(filename.begin(),
+                     filename.end(),
+                     ' ',
+                     '_');
+    }
+    else
+    {
+        filename = "Unknown";
+    }
+
+    std::ofstream report(
+        "reports/" + filename + "_Report.txt");
 
     report << content;
 
     report.close();
 
-    return "Report generated successfully.";
+    return "Report generated: " +
+           filename +
+           "_Report.txt";
 }

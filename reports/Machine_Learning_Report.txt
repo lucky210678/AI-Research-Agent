@@ -1,0 +1,9 @@
+Research Result
+-------------------------
+Topic: Machine Learning
+
+Definition:
+Algorithms that learn from data
+
+Applications:
+Prediction, Classification, Recommendation
