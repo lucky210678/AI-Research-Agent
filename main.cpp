@@ -8,21 +8,49 @@ int main()
     SearchAgent searchAgent;
     ReportAgent reportAgent;
 
-    std::string topic;
+    int choice;
 
-    std::cout << "Enter topic: ";
-    getline(std::cin, topic);
+    do
+    {
+        std::cout << "\n===== AI Research Agent =====\n";
+        std::cout << "1. Search Topic\n";
+        std::cout << "2. Generate Report\n";
+        std::cout << "3. Exit\n";
+        std::cout << "Enter Choice: ";
 
-    std::string result =
-        searchAgent.execute(topic);
+        std::cin >> choice;
+        std::cin.ignore();
 
-    std::cout << result << std::endl;
+        if (choice == 1)
+        {
+            std::string topic;
 
-    std::cout << "\nGenerating report...\n";
+            std::cout << "Enter Topic: ";
+            getline(std::cin, topic);
 
-    std::cout
-        << reportAgent.execute(result)
-        << std::endl;
+            std::cout << "\n";
+            std::cout << searchAgent.execute(topic)
+                      << std::endl;
+        }
+
+        else if (choice == 2)
+        {
+            std::string topic;
+
+            std::cout << "Enter Topic: ";
+            getline(std::cin, topic);
+
+            std::string result =
+                searchAgent.execute(topic);
+
+            std::cout
+                << reportAgent.execute(result)
+                << std::endl;
+        }
+
+    } while (choice != 3);
+
+    std::cout << "Goodbye!\n";
 
     return 0;
 }
