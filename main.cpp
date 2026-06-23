@@ -5,6 +5,7 @@
 #include "ReportViewerAgent.h"
 #include "OpenReportAgent.h"
 #include "StatisticsAgent.h"
+#include "SearchHistoryAgent.h"
 int main()
 {
     SearchAgent searchAgent;
@@ -12,6 +13,7 @@ int main()
     ReportViewerAgent viewerAgent;
     OpenReportAgent openReportAgent; 
     StatisticsAgent statsAgent;
+    SearchHistoryAgent historyAgent;
     int choice;
 
     do
@@ -22,7 +24,9 @@ int main()
         std::cout << "3. View Reports\n";
         std::cout << "4. Open Report\n";
         std::cout << "5. Statistics\n";
-        std::cout << "6. Exit\n";
+        std::cout << "6. Search History\n";
+        std::cout << "7. Exit\n";
+        
 
         std::cout << "Enter Choice: ";
 
@@ -95,8 +99,14 @@ else if (choice == 5)
         << statsAgent.execute("")
         << std::endl;
 
+}else if (choice == 6)
+{
+    std::cout
+        << historyAgent.execute("")
+        << std::endl;
 }
-    } while(choice != 6);
+
+    } while(choice != 7);
 
     std::cout << "Goodbye!\n";
     return 0;
