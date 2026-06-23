@@ -2,12 +2,14 @@
 
 #include "SearchAgent.h"
 #include "ReportAgent.h"
-
+#include "ReportViewerAgent.h"
+#include "OpenReportAgent.h"
 int main()
 {
     SearchAgent searchAgent;
     ReportAgent reportAgent;
-
+    ReportViewerAgent viewerAgent;
+    OpenReportAgent openReportAgent; 
     int choice;
 
     do
@@ -15,7 +17,10 @@ int main()
         std::cout << "\n===== AI Research Agent =====\n";
         std::cout << "1. Search Topic\n";
         std::cout << "2. Generate Report\n";
-        std::cout << "3. Exit\n";
+        std::cout << "3. View Reports\n";
+        std::cout << "4. Open Report\n";
+        std::cout << "5. Exit\n";
+
         std::cout << "Enter Choice: ";
 
         std::cin >> choice;
@@ -48,9 +53,27 @@ int main()
                 << std::endl;
         }
 
-    } while (choice != 3);
+    else if (choice == 3)
+{
+    std::cout
+        << viewerAgent.execute("")
+        << std::endl;
+}
+else if (choice == 4)
+{
+    std::string filename;
+
+    std::cout
+        << "Enter Report Filename: ";
+
+    getline(std::cin, filename);
+
+    std::cout
+        << openReportAgent.execute(filename)
+        << std::endl;
+}
+    } while(choice != 5);
 
     std::cout << "Goodbye!\n";
-
     return 0;
 }

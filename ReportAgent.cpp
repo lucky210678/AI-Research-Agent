@@ -6,7 +6,6 @@ ReportAgent::ReportAgent()
     : Agent("Report Agent")
 {
 }
-
 std::string ReportAgent::execute(std::string content)
 {
     std::string filename = content;
@@ -36,6 +35,17 @@ std::string ReportAgent::execute(std::string content)
     report << content;
 
     report.close();
+
+    std::ofstream listFile(
+        "reports/report_list.txt",
+        std::ios::app);
+
+    listFile
+        << filename
+        << "_Report.txt"
+        << std::endl;
+
+    listFile.close();
 
     return "Report generated: " +
            filename +
