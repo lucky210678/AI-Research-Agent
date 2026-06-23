@@ -1,15 +1,17 @@
 #include <iostream>
-
+#include<fstream>
 #include "SearchAgent.h"
 #include "ReportAgent.h"
 #include "ReportViewerAgent.h"
 #include "OpenReportAgent.h"
+#include "StatisticsAgent.h"
 int main()
 {
     SearchAgent searchAgent;
     ReportAgent reportAgent;
     ReportViewerAgent viewerAgent;
     OpenReportAgent openReportAgent; 
+    StatisticsAgent statsAgent;
     int choice;
 
     do
@@ -19,7 +21,8 @@ int main()
         std::cout << "2. Generate Report\n";
         std::cout << "3. View Reports\n";
         std::cout << "4. Open Report\n";
-        std::cout << "5. Exit\n";
+        std::cout << "5. Statistics\n";
+        std::cout << "6. Exit\n";
 
         std::cout << "Enter Choice: ";
 
@@ -28,14 +31,21 @@ int main()
 
         if (choice == 1)
         {
-            std::string topic;
+           std::string topic;
 
-            std::cout << "Enter Topic: ";
-            getline(std::cin, topic);
+std::cout << "Enter Topic: ";
+getline(std::cin, topic);
 
-            std::cout << "\n";
-            std::cout << searchAgent.execute(topic)
-                      << std::endl;
+std::ofstream history(
+    "data/search_history.txt",
+    std::ios::app);
+
+history << topic << std::endl;
+
+history.close();
+
+std::cout << searchAgent.execute(topic)
+          << std::endl;
         }
 
         else if (choice == 2)
@@ -44,6 +54,13 @@ int main()
 
             std::cout << "Enter Topic: ";
             getline(std::cin, topic);
+            std::ofstream history (
+    "data/search_history.txt",
+    std::ios::app);
+
+history << topic << std::endl;
+
+history.close();
 
             std::string result =
                 searchAgent.execute(topic);
@@ -72,7 +89,14 @@ else if (choice == 4)
         << openReportAgent.execute(filename)
         << std::endl;
 }
-    } while(choice != 5);
+else if (choice == 5)
+{
+    std::cout
+        << statsAgent.execute("")
+        << std::endl;
+
+}
+    } while(choice != 6);
 
     std::cout << "Goodbye!\n";
     return 0;
