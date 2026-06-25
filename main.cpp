@@ -8,6 +8,7 @@
 #include "SearchHistoryAgent.h"
 #include "DeleteReportAgent.h"
 #include "SummaryAgent.h"
+#include "SaveSummaryAgent.h"
 int main()
 {
     SearchAgent searchAgent;
@@ -18,6 +19,7 @@ int main()
     SearchHistoryAgent historyAgent;
     DeleteReportAgent deleteAgent;
     SummaryAgent summaryAgent;
+    SaveSummaryAgent saveSummaryAgent;
     int choice;
 
     do
@@ -31,7 +33,8 @@ int main()
         std::cout << "6. Search History\n";
         std::cout << "7. Delete Report\n";
         std::cout << "8. Generate Summary\n";
-        std::cout << "9. Exit\n";
+        std::cout << "9. Save Summary\n";
+        std::cout << "10. Exit\n";
         
 
         std::cout << "Enter Choice: ";
@@ -137,8 +140,24 @@ else if (choice == 8)
         << summaryAgent.execute(result)
         << std::endl;
 }
+else if (choice == 9)
+{
+    std::string topic;
 
-    } while(choice != 9);
+    std::cout
+        << "Enter Topic: ";
+
+    getline(std::cin, topic);
+
+    std::string result =
+        searchAgent.execute(topic);
+
+    std::cout
+        << saveSummaryAgent.execute(result)
+        << std::endl;
+}
+
+    } while(choice != 10);
 
     std::cout << "Goodbye!\n";
     return 0;

@@ -1,0 +1,9 @@
+Research Result
+-------------------------
+Topic: Robotics
+
+Definition:
+Design and development of intelligent machines
+
+Applications:
+Manufacturing, Healthcare, Space
