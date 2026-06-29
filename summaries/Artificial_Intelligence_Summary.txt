@@ -1,0 +1,9 @@
+Research Result
+-------------------------
+Topic: Artificial Intelligence
+
+Definition:
+Simulation of human intelligence by machines
+
+Applications:
+Healthcare, Finance, Robotics

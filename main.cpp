@@ -9,6 +9,8 @@
 #include "DeleteReportAgent.h"
 #include "SummaryAgent.h"
 #include "SaveSummaryAgent.h"
+#include "SummaryViewerAgent.h"
+#include "KeywordExtractionAgent.h"
 int main()
 {
     SearchAgent searchAgent;
@@ -20,6 +22,8 @@ int main()
     DeleteReportAgent deleteAgent;
     SummaryAgent summaryAgent;
     SaveSummaryAgent saveSummaryAgent;
+    SummaryViewerAgent summaryViewerAgent;
+    KeywordExtractionAgent keywordAgent;
     int choice;
 
     do
@@ -34,8 +38,9 @@ int main()
         std::cout << "7. Delete Report\n";
         std::cout << "8. Generate Summary\n";
         std::cout << "9. Save Summary\n";
-        std::cout << "10. Exit\n";
-        
+        std::cout << "10. View Summaries\n";
+        std::cout << "11. Extract Keywords\n";
+        std::cout << "12. Exit\n";
 
         std::cout << "Enter Choice: ";
 
@@ -156,9 +161,28 @@ else if (choice == 9)
         << saveSummaryAgent.execute(result)
         << std::endl;
 }
+else if (choice == 10)
+{
+    std::cout
+        << summaryViewerAgent.execute("")
+        << std::endl;
+}
+else if (choice == 11)
+{
+    std::string topic;
 
-    } while(choice != 10);
+    std::cout << "Enter Topic: ";
+    getline(std::cin, topic);
 
-    std::cout << "Goodbye!\n";
+    std::string result =
+        searchAgent.execute(topic);
+
+    std::cout
+        << keywordAgent.execute(result)
+        << std::endl;
+}
+    } while(choice != 12);
+
+    std::cout << "KABHI ALVIDA NA KEHNA!\n";
     return 0;
 }

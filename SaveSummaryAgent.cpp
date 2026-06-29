@@ -68,6 +68,16 @@ std::replace(
     file << content;
 
     file.close();
+    std::ofstream listFile(
+    "summaries/summary_list.txt",
+    std::ios::app);
+
+listFile
+    << topic
+    << "_Summary.txt"
+    << std::endl;
+
+listFile.close();
 
     return "Summary saved: "
            + topic +
